@@ -2,34 +2,34 @@ import Foundation
 
 // MARK: - F1ApiMainPage
 struct F1ApiMainPage: Codable {
-    let resultObj: F1ApiMainPageResultObj
+    let resultObj: F1ApiMainPageResultObj?
 }
 
 // MARK: - F1ApiMainPageResultObj
 struct F1ApiMainPageResultObj: Codable {
-    let containers: [F1ApiPurpleContainer]
+    let containers: [F1ApiPurpleContainer]?
 }
 
 // MARK: - F1ApiPurpleContainer
 struct F1ApiPurpleContainer: Codable {
-    let layout: String
-    let retrieveItems: F1ApiRetrieveItems
+    let layout: String?
+    let retrieveItems: F1ApiRetrieveItems?
 }
 
 // MARK: - F1ApiRetrieveItems
 struct F1ApiRetrieveItems: Codable {
-    let resultObj: F1ApiRetrieveItemsResultObj
+    let resultObj: F1ApiRetrieveItemsResultObj?
 }
 
 // MARK: - F1ApiRetrieveItemsResultObj
 struct F1ApiRetrieveItemsResultObj: Codable {
-    let containers: [F1ApiFluffyContainer]
+    let containers: [F1ApiFluffyContainer]?
 }
 
 // MARK: - F1ApiFluffyContainer
 struct F1ApiFluffyContainer: Codable {
-    let metadata: F1ApiFluffyMetadata
-    let id: String
+    let metadata: F1ApiFluffyMetadata?
+    let id: String?
 }
 
 // MARK: - F1ApiFluffyMetadata

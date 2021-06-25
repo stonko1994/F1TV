@@ -192,16 +192,19 @@ extension F1TV {
 
 // MARK: - helpers
 private func getActiveRaceWeekend(from mainPage: F1ApiMainPage) -> ActiveRaceWeekend? {
-    guard let raceWeekendContainer = mainPage.resultObj.containers.first(where: { $0.layout == "hero"}) else {
+    guard let raceWeekendContainer = mainPage.resultObj?.containers?.first(where: { $0.layout == "hero"}) else {
         return nil
     }
 
-    guard let innerContainer = raceWeekendContainer.retrieveItems.resultObj.containers.first else {
+    guard let innerContainer = raceWeekendContainer.retrieveItems?.resultObj?.containers?.first else {
         return nil
     }
 
-    let metadata = innerContainer.metadata
-    return ActiveRaceWeekend(from: metadata, id: Int(innerContainer.id))
+    guard let metadata = innerContainer.metadata,
+          let id = innerContainer.id else {
+        return nil
+    }
+    return ActiveRaceWeekend(from: metadata, id: Int(id))
 }
 
 private func buildSession(from eventContainer: F1ApiContainer) -> Session {
